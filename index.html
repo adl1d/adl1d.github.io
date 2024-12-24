@@ -2,97 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Test Website</title>
+    <title>Caesar Cipher Tool</title>
     <style>
-        /* General Body Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            margin: 50px;
         }
-
-        /* Contributors Section */
         .container {
-            text-align: center;
-            padding: 2rem;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 600px;
-            width: 90%;
+            margin: auto;
         }
-
-        .container h1 {
-            color: #0078d7;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+        label, input, textarea, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
         }
-
-        .container p {
-            color: #555;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .contributors h2 {
-            margin-bottom: 1.5rem;
-            color: #333;
-            font-size: 1.5rem;
-        }
-
-        .contributors ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .contributors li {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .contributors span {
-            font-weight: bold;
-            color: #555;
-        }
-
-        /* Footer Styles */
-        footer {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #777;
+        textarea {
+            height: 100px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Website Header and Description -->
-        <h1>A Test Website</h1>
-        <p>This is a test website for static website deployment for the cloud computing project.</p>
+        <h1>Caesar Cipher Tool</h1>
+        <label for="shift">Shift Value:</label>
+        <input type="number" id="shift" value="3" min="1" max="25">
 
-        <!-- Contributors Section -->
-        <div class="contributors">
-            <h2>Done By:</h2>
-            <ul>
-                <li><span>عادل ناصر محمد</span> — 202110558</li>
-                <li><span>شهد يحيى الطيب</span> — 202210774</li>
-                <li><span>محمد فخري الفالح</span> — 202210495</li>
-                <li><span>محمد زياد جرو</span> — 202211138</li>
-                <li><span>دانيا خالد عثمان</span> — 202020247</li>
-                <li><span>أحمد هشام عبيدات</span> — 202221443</li>
-                
-            </ul>
-        </div>
+        <label for="mode">Mode:</label>
+        <select id="mode">
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select>
 
-        <!-- Footer -->
-        <footer>© 2024 Test Website. All rights reserved.</footer>
+        <label for="inputText">Input Text:</label>
+        <textarea id="inputText"></textarea>
+
+        <button onclick="processText()">Submit</button>
+
+        <h2>Output:</h2>
+        <textarea id="outputText" readonly></textarea>
     </div>
+
+    <script>
+        function caesarCipher(str, shift, mode) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            shift = mode === 'decrypt' ? (26 - shift) % 26 : shift;
+            return str
+                .toUpperCase()
+                .split('')
+                .map(char => {
+                    const index = alphabet.indexOf(char);
+                    if (index === -1) return char;
+                    return alphabet[(index + shift) % 26];
+                })
+                .join('');
+        }
+
+        function processText() {
+            const shift = parseInt(document.getElementById('shift').value);
+            const mode = document.getElementById('mode').value;
+            const inputText = document.getElementById('inputText').value;
+            const outputText = caesarCipher(inputText, shift, mode);
+            document.getElementById('outputText').value = outputText;
+        }
+    </script>
 </body>
 </html>
