@@ -2,69 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Caesar Cipher Tool</title>
+    <title>Vigenère and Playfair Cipher Tool</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 50px;
+            margin: 20px;
         }
         .container {
             max-width: 600px;
             margin: auto;
         }
-        label, input, textarea, button {
-            display: block;
+        textarea, input, select {
             width: 100%;
-            margin-bottom: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
         }
-        textarea {
-            height: 100px;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Caesar Cipher Tool</h1>
-        <label for="shift">Shift Value:</label>
-        <input type="number" id="shift" value="3" min="1" max="25">
-
-        <label for="mode">Mode:</label>
-        <select id="mode">
-            <option value="encrypt">Encrypt</option>
-            <option value="decrypt">Decrypt</option>
+        <h1>Vigenère and Playfair Cipher Tool</h1>
+        <label for="cipher">Select Cipher:</label>
+        <select id="cipher">
+            <option value="vigenere">Vigenère Cipher</option>
+            <option value="playfair">Playfair Cipher</option>
         </select>
-
+        <label for="key">Key:</label>
+        <input type="text" id="key" placeholder="Enter key">
         <label for="inputText">Input Text:</label>
-        <textarea id="inputText"></textarea>
-
-        <button onclick="processText()">Submit</button>
-
+        <textarea id="inputText" rows="4" placeholder="Enter text to encrypt or decrypt"></textarea>
+        <button onclick="encrypt()">Encrypt</button>
+        <button onclick="decrypt()">Decrypt</button>
         <h2>Output:</h2>
-        <textarea id="outputText" readonly></textarea>
+        <textarea id="outputText" rows="4" readonly></textarea>
     </div>
 
     <script>
-        function caesarCipher(str, shift, mode) {
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            shift = mode === 'decrypt' ? (26 - shift) % 26 : shift;
-            return str
-                .toUpperCase()
-                .split('')
-                .map(char => {
-                    const index = alphabet.indexOf(char);
-                    if (index === -1) return char;
-                    return alphabet[(index + shift) % 26];
-                })
-                .join('');
-        }
-
-        function processText() {
-            const shift = parseInt(document.getElementById('shift').value);
-            const mode = document.getElementById('mode').value;
+        function encrypt() {
+            const cipher = document.getElementById('cipher').value;
+            const key = document.getElementById('key').value;
             const inputText = document.getElementById('inputText').value;
-            const outputText = caesarCipher(inputText, shift, mode);
+            let outputText = '';
+
+            if (cipher === 'vigenere') {
+                outputText = vigenereEncrypt(inputText, key);
+            } else if (cipher === 'playfair') {
+                outputText = playfairEncrypt(inputText, key);
+            }
+
             document.getElementById('outputText').value = outputText;
         }
-    </script>
-</body>
-</html>
+
+        function decrypt() {
+            const cipher = document.getElementById('cipher').value;
+            const key = document.getElementById('key').value;
+            const inputText = document.getElementById('inputText').value;
+            let outputText = '';
+
+            if (cipher === 'vigenere') {
+                outputText = vigenereDecrypt(inputText, key);
+            } else if (cipher === 'playfair') {
+                outputText = playfairDecrypt(inputText, key);
+            }
+
+            document.getElementById('outputText').value = outputText;
+        }
+
+        // Vigenère Cipher Implementation
+        function vigenereEncrypt(plainText, key) {
+            plainText = plainText.toUpperCase().replace(/[^A-Z]/g, '');
+            key = key.toUpperCase().replace(/[^A-Z]/g, '');
+            let cipherText = '';
+            for (let i = 0, j = 0; i < plainText.length; i++) {
+                const p = plainText.charCodeAt(i) - 65;
+                const k = key.charCodeAt(j % key.length) - 65;
+                const c = (p + k) % 26;
+                cipherText += String.fromCharCode(c + 65);
+                j++;
+            }
+            return cipherText;
+        }
+
+        function vigenereDecrypt(cipherText, key) {
+            cipherText = cipherText.toUpperCase().replace(/[^A-Z]/g, '');
+            key = key.toUpperCase().replace(/[^A-Z]/g, '');
+            let plainText = '';
+            for (let i = 0, j = 0; i < cipherText.length; i++) {
+                const c = cipherText.charCodeAt(i) - 65;
+                const k = key.charCodeAt(j % key.length) - 65;
+                const p = (c - k + 26) % 26;
+                plainText += String.fromCharCode(p + 65);
+                j++;
+            }
+            return plainText;
+        }
+
+        // Playfair Cipher Implementation
+        function playfairEncrypt(plainText, key) {
+            const matrix = generatePlayfairMatrix(key);
+            plainText = plainText.toUpperCase().replace(/[^A-Z]/g, '').replace(/J/g, 'I');
+            let preparedText = '';
+            for (let i = 0; i < plainText.length; i += 2) {
+                let a = plainText[i];
+                let b = plainText[i + 1] || 'X';
+                if (a === b) {
+                    b = 'X';
+                    i--;
+                }
+                preparedText += a + b;
+            }
+            let cipherText = '';
+            for (let i = 0; i < preparedText.length; i += 2) {
+                const [row1, col1] = findPosition(matrix, preparedText[i]);
+                const [row2, col2] = findPosition(matrix, preparedText[i + 1]);
+                if (row1 === row2) {
+                    cipherText += matrix[row1][(col1 + 1) % 5] + matrix[row2][(col2 + 1) % 5];
+                } else if (col1 === col2) {
+                    cipherText += matrix[(row1 + 1) % 5][col1] + matrix[(row2 + 1) % 5][col2];
+                } else {
+                    cipherText += matrix[row1][col2] + matrix[row2][col1];
+                }
+            }
+            return cipherText;
+        }
+
+        function playfairDecrypt(cipherText, key) {
+            const matrix = generatePlayfairMatrix(key);
+            cipherText = cipherText.toUpperCase().replace(/[^A-Z]/g, '').replace(/J/g, 'I');
+            let plainText = '';
+            for (let i = 0; i < cipherText.length; i += 2) {
+                const [row1, col1] = findPosition(matrix, cipherText[i]);
+                const [row2, col2] = findPosition(matrix, cipherText[i + 1]);
+                if (row1 === row2) {
+                    plainText += matrix[row1][(col1 + 4) % 5] + matrix[row2][(col2 + 4) % 5];
+                } else if (col1 === col2) {
+                    plainText += matrix[(row1 + 4) % 5][col1] + matrix[(row2 + 4) % 5][col2];
+                } else {
+                    plainText += matrix[row1][col2] + matrix[row2][col1];
+                }
+            }
+            return plainText;
+        }
+
+        function generatePlayfairMatrix(key) {
+            key = key.toUpperCase().replace(/[^A-Z]/g, '').replace(/
+::contentReference[oaicite:0]{index=0}
+ 
