@@ -1,118 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Playfair Cipher</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input, textarea, button {
-            display: block;
-            margin-top: 10px;
-            width: 100%;
-            max-width: 500px;
-        }
-        textarea {
-            height: 100px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Playfair Cipher</h1>
-    <label for="key">Key:</label>
-    <input type="text" id="key" placeholder="Enter key">
-    
-    <label for="plaintext">Plaintext:</label>
-    <textarea id="plaintext" placeholder="Enter plaintext"></textarea>
-    
-    <button onclick="encrypt()">Encrypt</button>
-    
-    <label for="ciphertext">Ciphertext:</label>
-    <textarea id="ciphertext" placeholder="Ciphertext will appear here" readonly></textarea>
-    
-    <button onclick="decrypt()">Decrypt</button>
-    
-    <script>
-        function generateKeySquare(key) {
-            key = key.toUpperCase().replace(/[^A-Z]/g, '').replace(/J/g, 'I');
-            let keySquare = '';
-            for (let char of key) {
-                if (!keySquare.includes(char)) {
-                    keySquare += char;
-                }
-            }
-            for (let char of 'ABCDEFGHIKLMNOPQRSTUVWXYZ') {
-                if (!keySquare.includes(char)) {
-                    keySquare += char;
-                }
-            }
-            return keySquare;
-        }
+<!--Playfair-->
 
-        function formatText(text) {
-            text = text.toUpperCase().replace(/[^A-Z]/g, '').replace(/J/g, 'I');
-            let formatted = '';
-            for (let i = 0; i < text.length; i += 2) {
-                let pair = text[i];
-                if (i + 1 < text.length) {
-                    if (text[i] === text[i + 1]) {
-                        pair += 'X';
-                        i--;
-                    } else {
-                        pair += text[i + 1];
-                    }
-                } else {
-                    pair += 'X';
-                }
-                formatted += pair;
-            }
-            return formatted;
-        }
-
-        function findPosition(char, keySquare) {
-            const index = keySquare.indexOf(char);
-            return [Math.floor(index / 5), index % 5];
-        }
-
-        function processPair(pair, keySquare, encrypt = true) {
-            const [row1, col1] = findPosition(pair[0], keySquare);
-            const [row2, col2] = findPosition(pair[1], keySquare);
-            if (row1 === row2) {
-                return keySquare[row1 * 5 + (encrypt ? (col1 + 1) % 5 : (col1 + 4) % 5)] +
-                       keySquare[row2 * 5 + (encrypt ? (col2 + 1) % 5 : (col2 + 4) % 5)];
-            } else if (col1 === col2) {
-                return keySquare[((encrypt ? (row1 + 1) % 5 : (row1 + 4) % 5) * 5) + col1] +
-                       keySquare[((encrypt ? (row2 + 1) % 5 : (row2 + 4) % 5) * 5) + col2];
-            } else {
-                return keySquare[row1 * 5 + col2] + keySquare[row2 * 5 + col1];
-            }
-        }
-
-        function playfair(text, key, encrypt = true) {
-            const keySquare = generateKeySquare(key);
-            const formattedText = formatText(text);
-            let result = '';
-            for (let i = 0; i < formattedText.length; i += 2) {
-                result += processPair(formattedText.slice(i, i + 2), keySquare, encrypt);
-            }
-            return result;
-        }
-
-        function encrypt() {
-            const key = document.getElementById('key').value;
-            const plaintext = document.getElementById('plaintext').value;
-            const ciphertext = playfair(plaintext, key, true);
-            document.getElementById('ciphertext').value = ciphertext;
-        }
-
-        function decrypt() {
-            const key = document.getElementById('key').value;
-            const ciphertext = document.getElementById('ciphertext').value;
-            const plaintext = playfair(ciphertext, key, false);
-            document.getElementById('plaintext').value = plaintext;
-        }
-    </script>
-</body>
-</html>
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Playfair Cipher</title>
+      </head>
+      <body>
+      
+      <div class="container">
+        <div class="border p-3 rounded shadow mt-2" id="Playfair Cipher">
+          <h2>(3.) Playfair Cipher</h2>
+      </head>
+      <body>
+      <div class="border p-3 rounded shadow mt-2" id="pf_block">
+        <form id="playfair_form" action="#pf_block">
+          Plain Text: <input type="text" id="pf_text" class="form-control" placeholder="Enter a text to encrypt">
+          Key: <input type="text" id="pf_key" class="form-control" placeholder="Enter a key">
+          <button id="pf_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runPlayfairEncrypt()">Encrypt</button>
+          <button id="pf_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runPlayfairDecrypt()">Decrypt</button>
+        </form>
+        <div class="mt-4 border p-3 rounded">
+          <b>Encrypted/Decrypted Text:</b>
+          <div id="pf_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <script type="text/javascript">
