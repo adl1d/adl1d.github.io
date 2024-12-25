@@ -36,48 +36,6 @@
             </div>
         </section>
 
-        <!-- Monoalphabetic Cipher -->
-        <section id="monoalphabetic" class="mb-5">
-            <h2 class="text-danger">Monoalphabetic Cipher</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="mo-text" class="form-label">Plain Text</label>
-                    <input type="text" id="mo-text" class="form-control" placeholder="Enter text">
-                </div>
-                <div class="mb-3">
-                    <label for="mo-key" class="form-label">Key (26 characters)</label>
-                    <input type="text" id="mo-key" class="form-control" placeholder="Enter key">
-                </div>
-                <button type="button" class="btn btn-danger" onclick="runMonoalphabeticEncrypt()">Encrypt</button>
-                <button type="button" class="btn btn-secondary" onclick="runMonoalphabeticDecrypt()">Decrypt</button>
-            </form>
-            <div class="result mt-3">
-                <h5>Result</h5>
-                <div id="mo-result" class="p-2 border rounded bg-light text-danger"></div>
-            </div>
-        </section>
-
-        <!-- Hill Cipher -->
-        <section id="hill" class="mb-5">
-            <h2 class="text-danger">Hill Cipher</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="hill-text" class="form-label">Plain Text</label>
-                    <input type="text" id="hill-text" class="form-control" placeholder="Enter text">
-                </div>
-                <div class="mb-3">
-                    <label for="hill-key" class="form-label">Key (4 numbers)</label>
-                    <input type="text" id="hill-key" class="form-control" placeholder="Enter 4 numbers without spaces">
-                </div>
-                <button type="button" class="btn btn-danger" onclick="runHillEncrypt()">Encrypt</button>
-                <button type="button" class="btn btn-secondary" onclick="runHillDecrypt()">Decrypt</button>
-            </form>
-            <div class="result mt-3">
-                <h5>Result</h5>
-                <div id="hill-result" class="p-2 border rounded bg-light text-danger"></div>
-            </div>
-        </section>
-
         <!-- ElGamal Cipher -->
         <section id="elgamal" class="mb-5">
             <h2 class="text-danger">ElGamal Cipher</h2>
@@ -92,48 +50,6 @@
             <div class="result mt-3">
                 <h5>Result</h5>
                 <div id="elgamal-result" class="p-2 border rounded bg-light text-danger"></div>
-            </div>
-        </section>
-
-        <!-- Vernam Cipher -->
-        <section id="vernam" class="mb-5">
-            <h2 class="text-danger">Vernam Cipher</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="vernam-text" class="form-label">Plain Text</label>
-                    <input type="text" id="vernam-text" class="form-control" placeholder="Enter text">
-                </div>
-                <div class="mb-3">
-                    <label for="vernam-key" class="form-label">Key</label>
-                    <input type="text" id="vernam-key" class="form-control" placeholder="Enter key">
-                </div>
-                <button type="button" class="btn btn-danger" onclick="runVernamEncrypt()">Encrypt</button>
-                <button type="button" class="btn btn-secondary" onclick="runVernamDecrypt()">Decrypt</button>
-            </form>
-            <div class="result mt-3">
-                <h5>Result</h5>
-                <div id="vernam-result" class="p-2 border rounded bg-light text-danger"></div>
-            </div>
-        </section>
-
-        <!-- Polyalphabetic Cipher -->
-        <section id="polyalphabetic" class="mb-5">
-            <h2 class="text-danger">Polyalphabetic Cipher</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="poly-text" class="form-label">Plain Text</label>
-                    <input type="text" id="poly-text" class="form-control" placeholder="Enter text">
-                </div>
-                <div class="mb-3">
-                    <label for="poly-key" class="form-label">Key</label>
-                    <input type="text" id="poly-key" class="form-control" placeholder="Enter key">
-                </div>
-                <button type="button" class="btn btn-danger" onclick="runPolyalphabeticEncrypt()">Encrypt</button>
-                <button type="button" class="btn btn-secondary" onclick="runPolyalphabeticDecrypt()">Decrypt</button>
-            </form>
-            <div class="result mt-3">
-                <h5>Result</h5>
-                <div id="poly-result" class="p-2 border rounded bg-light text-danger"></div>
             </div>
         </section>
 
@@ -156,26 +72,6 @@
                 <h5>Result</h5>
                 <div id="caesar-result" class="p-2 border rounded bg-light text-danger"></div>
             </div>
-        </section>
-
-        <!-- 24-Bit Block Cipher -->
-        <section id="block-cipher" class="mb-5">
-            <h2 class="text-danger">24-Bit Block Cipher</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="block-text" class="form-label">Plain Text (Hex)</label>
-                    <input type="text" id="block-text" class="form-control" placeholder="Enter 6-digit hex value">
-                </div>
-                <div class="mb-3">
-                    <label for="block-key" class="form-label">Key (Hex)</label>
-                    <input type="text" id="block-key" class="form-control" placeholder="Enter 6-digit hex key">
-                </div>
-                <button type="button" class="btn btn-danger" onclick="runBlockEncrypt()">Encrypt</button>
-                <div class="result mt-3">
-                    <h5>Result</h5>
-                    <div id="block-result" class="p-2 border rounded bg-light text-danger"></div>
-                </div>
-            </form>
         </section>
     </main>
     <footer class="text-center py-4">
