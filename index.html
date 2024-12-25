@@ -1,1173 +1,186 @@
 <!DOCTYPE html>
-<html>
-<body style="background-color:rgb(255, 255, 255);">
-</body>
-</html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cipher Website</title>
     <link rel="stylesheet" href="style.css">
-    <title>CIPHER WEBSITE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-           <header>
-        <a href="#" class="logo">CIPHER WEBSITE</a>
-        </nav>
-    </header>
-    <section class="cards" id="Encode OR Decode ">
-        <h2 class="title">Encode OR Decode - Text</h2>
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Classical Cipher Encoder/Decoder</title>
-            <link rel="styleheet" href="style.css">
-        </head>
-        <body>
-            <style>
-          </style>
-<main>
-
-
-
-
-(1.)	Vigenère Cipher
-
-
-
- <!-- Vigenère -->
-
-
-<!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Classical Ciphers</title>
-   <!-- Include Bootstrap CSS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
- </head>
- <body>
- 
- <div class="container">
-   <div class="border p-3 rounded shadow mt-2" id="vigenere_block">
-     <h2>(1.) Vigenere Cipher</h2>
-     <form id="vigenere_form" action="#vigenere_block">
-       Plain Text: <input type="text" id="vg_text" class="form-control" placeholder="Enter a text to encrypt">
-       Key: <input type="text" id="vg_key" class="form-control" placeholder="Enter a key (Must Be Characters)">
-       <button id="vg_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runVigenereEncrypt()">Encrypt</button>
-       <button id="vg_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runVigenereDecrypt()">Decrypt</button>
-     </form>
-     <div class="mt-4 border p-3 rounded">
-       <b>Encrypted/Decrypted Text:</b>
-       <div id="vg_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-     </div>
-   </div>
- </div>
- 
- <script type="text/javascript">
-   const alphabet1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
- 
-   function runVigenereEncrypt() {
-     const plaintext = document.getElementById("vg_text").value.toUpperCase();
-     const key = document.getElementById("vg_key").value.toUpperCase();
- 
-     if (plaintext.length === 0 || key.length === 0) {
-       alert("Text and key fields cannot be empty!");
-       return;
-     }
- 
-     const encryptedText = vigenereEncrypt(plaintext, key);
- 
-     document.getElementById("vg_result").textContent ="Encrypted Text: " + encryptedText;
-   }
- 
-   function runVigenereDecrypt() {
-     const encryptedText = document.getElementById("vg_text").value.toUpperCase();
-     const key = document.getElementById("vg_key").value.toUpperCase();
- 
-     if (encryptedText.length === 0 || key.length === 0) {
-       alert("Text and key fields cannot be empty!");
-       return;
-     }
- 
-     const decryptedText = vigenereDecrypt(encryptedText, key);
- 
-     document.getElementById("vg_result").textContent ="Decrypted Text: " + decryptedText;
-   }
- 
-   function vigenereEncrypt(plaintext, key) {
-     let encryptedText = '';
-     key = key.toUpperCase();
-     let keyIndex = 0;
- 
-     for (let i = 0; i < plaintext.length; i++) {
-       if (plaintext[i] === ' ') {
-         encryptedText += ' ';
-         continue;
-       }
- 
-       const shift = alphabet.indexOf(key[keyIndex]);
-       const plainIdx = alphabet.indexOf(plaintext[i]);
- 
-       const encryptedIdx = (plainIdx + shift) % 26;
-       encryptedText += alphabet[encryptedIdx];
- 
-       keyIndex = (keyIndex + 1) % key.length;
-     }
- 
-     return encryptedText;
-   }
- 
-   function vigenereDecrypt(encryptedText, key) {
-     let decryptedText = '';
-     key = key.toUpperCase();
-     let keyIndex = 0;
- 
-     for (let i = 0; i < encryptedText.length; i++) {
-       if (encryptedText[i] === ' ') {
-         decryptedText += ' ';
-         continue;
-       }
- 
-       const shift = alphabet.indexOf(key[keyIndex]);
-       const encryptedIdx = alphabet.indexOf(encryptedText[i]);
- 
-       const decryptedIdx = (encryptedIdx - shift + 26) % 26;
-       decryptedText += alphabet[decryptedIdx];
- 
-       keyIndex = (keyIndex + 1) % key.length;
-     }
- 
-     return decryptedText;
-   }
- </script>
- </body>
- </html>
-
-
-
-
-
-Monoalphabetic CIPHER:
- <!--  Monoalphabetic Cipher  -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monoalphabetic Cipher</title>
-</head>
-<body>
-
-<div class="container">
-  <div class="border p-3 rounded shadow mt-2" id="Monoalphabetic_block">
-    <h2>(2.) Monoalphabetic Cipher</h2>
-    <form id="Monoalphabetic_form" action="#Monoalphabetic_block">
-      Plain Text: <input type="text" id="Monoalphabetic_text" class="form-control" placeholder="Enter a text to encrypt">
-      <label for="substitution-key">Key (26 characters):</label>
-      <input type="text" id="substitution-key" class="form-control" placeholder="Enter substitution key (26 characters)" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ">
-      <button id="generate_key_btn" class="btn btn-secondary mt-2" type="button" onclick="generateSubstitutionKey()">Generate Key</button>
-      <button id="mo_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runMonoalphabeticEncrypt()">Encrypt</button>
-      <button id="mo_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runMonoalphabeticDecrypt()">Decrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <b>Result:</b>
-      <div id="mo_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<script type="text/javascript">
-  function generateSubstitutionKey() {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const shuffledAlphabet = shuffleString(alphabet);
-    document.getElementById("substitution-key").value = shuffledAlphabet;
-  }
-
-  function shuffleString(str) {
-    const array = str.split("");
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array.join("");
-  }
-
-  function runMonoalphabeticEncrypt() {
-    const plaintext = document.getElementById("Monoalphabetic_text").value.toUpperCase();
-    const key = document.getElementById("substitution-key").value.toUpperCase();
-
-    if (plaintext.length === 0 || key.length !== 26) {
-      alert("Invalid input. Text cannot be empty and key must have 26 characters.");
-      return;
-    }
-
-    const encryptedText = monoalphabeticEncrypt(plaintext, key);
-
-    document.getElementById("mo_result").textContent = "Encrypted Text: " + encryptedText;
-  }
-
-  function runMonoalphabeticDecrypt() {
-    const encryptedText = document.getElementById("Monoalphabetic_text").value.toUpperCase();
-    const key = document.getElementById("substitution-key").value.toUpperCase();
-
-    if (encryptedText.length === 0 || key.length !== 26) {
-      alert("Invalid input. Text cannot be empty and key must have 26 characters.");
-      return;
-    }
-
-    const decryptedText = monoalphabeticDecrypt(encryptedText, key);
-
-    document.getElementById("mo_result").textContent = "Decrypted Text: " + encryptedText;
-
-  }
-
-  function monoalphabeticEncrypt(plaintext, key) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let encryptedText = "";
-
-    for (let i = 0; i < plaintext.length; i++) {
-      const char = plaintext[i];
-      const index = alphabet.indexOf(char);
-
-      if (index !== -1) {
-        encryptedText += key[index];
-      } else {
-        encryptedText += char;
-      }
-    }
-
-    return encryptedText;
-  }
-
-  function monoalphabeticDecrypt(encryptedText, key) {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let decryptedText = "";
-
-    for (let i = 0; i < encryptedText.length; i++) {
-      const char = encryptedText[i];
-      const index = key.indexOf(char);
-
-      if (index !== -1) {
-        decryptedText += alphabet[index];
-      } else {
-        decryptedText += char;
-      }
-    }
-
-    return decryptedText;
-  }
-
-</script>
-</body>
-</html>
-
-
-
-
-(3.) Playfair Cipher:
-<!--Playfair-->
-
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Playfair Cipher</title>
-      </head>
-      <body>
-      
-      <div class="container">
-        <div class="border p-3 rounded shadow mt-2" id="Playfair Cipher">
-          <h2>(3.) Playfair Cipher</h2>
-      </head>
-      <body>
-      <div class="border p-3 rounded shadow mt-2" id="pf_block">
-        <form id="playfair_form" action="#pf_block">
-          Plain Text: <input type="text" id="pf_text" class="form-control" placeholder="Enter a text to encrypt">
-          Key: <input type="text" id="pf_key" class="form-control" placeholder="Enter a key">
-          <button id="pf_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runPlayfairEncrypt()">Encrypt</button>
-          <button id="pf_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runPlayfairDecrypt()">Decrypt</button>
-        </form>
-        <div class="mt-4 border p-3 rounded">
-          <b>Encrypted/Decrypted Text:</b>
-          <div id="pf_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
+    <header class="navbar bg-light shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand text-danger">CIPHER WEBSITE</a>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-      <script type="text/javascript">
-        const alphabet = 'ABCDEFGHIKLMNOPQRSTUVWXYZ';
-      
-        function runPlayfairEncrypt() {
-          const plaintext = document.getElementById("pf_text").value.toUpperCase().replace(/J/g, 'I');
-          const key = document.getElementById("pf_key").value.toUpperCase().replace(/J/g, 'I');
-      
-          if (plaintext.length === 0 || key.length === 0) {
-            alert("Text and key fields cannot be empty!");
-            return;
-          }
-      
-          const matrix = generatePlayfairMatrix(key);
-          const encryptedText = playfairEncrypt(plaintext, matrix);
-      
-          document.getElementById("pf_result").textContent ="Encrypted Text: " + encryptedText;
-        }
-      
-        function runPlayfairDecrypt() {
-          const encryptedText = document.getElementById("pf_text").value.toUpperCase().replace(/J/g, 'I');
-          const key = document.getElementById("pf_key").value.toUpperCase().replace(/J/g, 'I');
-      
-          if (encryptedText.length === 0 || key.length === 0) {
-            alert("Text and key fields cannot be empty!");
-            return;
-          }
-      
-          const matrix = generatePlayfairMatrix(key);
-          const decryptedText = playfairDecrypt(encryptedText, matrix);
-      
-          document.getElementById("pf_result").textContent ="Decrypted Text: " + decryptedText;
-        }
-      
-        function generatePlayfairMatrix(key) {
-          key = key.replace(/J/g, 'I');
-          key = key.toUpperCase();
-          key = key.replace(/[^A-Z]/g, ''); // Remove non-alphabet characters
-          key = [...new Set(key)]; // Remove duplicates
-          const matrix = [];
-      
-          for (let i = 0; i < key.length; i++) {
-            if (matrix.length === 0 || matrix[matrix.length - 1].length === 5) {
-              matrix.push([]);
-            }
-            matrix[matrix.length - 1].push(key[i]);
-          }
-      
-          for (let i = 0; i < alphabet.length; i++) {
-            if (!key.includes(alphabet[i])) {
-              if (matrix.length === 0 || matrix[matrix.length - 1].length === 5) {
-                matrix.push([]);
-              }
-              matrix[matrix.length - 1].push(alphabet[i]);
-            }
-          }
-      
-          return matrix;
-        }
-      
-        function playfairEncrypt(plaintext, matrix) {
-          const pairs = getLetterPairs(plaintext);
-          let encryptedText = '';
-      
-          pairs.forEach(pair => {
-            const [row1, col1] = findPosition(matrix, pair.charAt(0));
-            const [row2, col2] = findPosition(matrix, pair.charAt(1));
-      
-            if (row1 === row2) {
-              encryptedText += matrix[row1][(col1 + 1) % 5] + matrix[row2][(col2 + 1) % 5];
-            } else if (col1 === col2) {
-              encryptedText += matrix[(row1 + 1) % 5][col1] + matrix[(row2 + 1) % 5][col2];
-            } else {
-              encryptedText += matrix[row1][col2] + matrix[row2][col1];
-            }
-          });
-      
-          return encryptedText;
-        }
-      
-        function playfairDecrypt(encryptedText, matrix) {
-          const pairs = getLetterPairs(encryptedText);
-          let decryptedText = '';
-      
-          pairs.forEach(pair => {
-            const [row1, col1] = findPosition(matrix, pair.charAt(0));
-            const [row2, col2] = findPosition(matrix, pair.charAt(1));
-      
-            if (row1 === row2) {
-              decryptedText += matrix[row1][(col1 - 1 + 5) % 5] + matrix[row2][(col2 - 1 + 5) % 5];
-            } else if (col1 === col2) {
-              decryptedText += matrix[(row1 - 1 + 5) % 5][col1] + matrix[(row2 - 1 + 5) % 5][col2];
-            } else {
-              decryptedText += matrix[row1][col2] + matrix[row2][col1];
-            }
-          });
-      
-          return decryptedText;
-        }
-      
-        // Utility functions
-        function getLetterPairs(text) {
-          text = text.toUpperCase().replace(/J/g, 'I');
-          const pairs = [];
-      
-          for (let i = 0; i < text.length; i += 2) {
-            if (i + 1 < text.length) {
-              pairs.push(text.substr(i, 2));
-            } else {
-              pairs.push(text.charAt(i) + 'X');
-            }
-          }
-          return pairs;
-        }
-        function findPosition(matrix, letter) {
-          for (let row = 0; row < matrix.length; row++) {
-            for (let col = 0; col < matrix[row].length; col++) {
-              if (matrix[row][col] === letter) {
-                return [row, col];
-              }
-            }
-          }
-          return [-1, -1]; // Not found
-        }
-      </script>
-      </body>
-      </html>
-
-
-
-(4.) Autokey Cipher:
-<!-- AutoKey -->
-
-
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classical Ciphers</title>
-  <!-- Include Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-
-<div class="container">
-  <div class="border p-3 rounded shadow mt-2" id="autokey_block">
-    <h2>(4.) AutoKey Cipher</h2>
-    <form id="autokey_form" action="#autokey_block">
-      Plain Text: <input type="text" id="autokey_text" class="form-control" placeholder="Enter a text to encrypt">
-      Key: <input type="text" id="ak_key" class="form-control" placeholder="Enter a key(One Letter)">
-      <button id="ak_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runAutoKeyEncrypt()">Encrypt</button>
-      <button id="ak_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runAutoKeyDecrypt()">Decrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <b>Encrypted/Decrypted Text:</b>
-      <div id="ak_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  const alphabet0 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-  function runAutoKeyEncrypt() {
-    const plaintext = document.getElementById("autokey_text").value.toUpperCase();
-    const key = document.getElementById("ak_key").value.toUpperCase();
-
-    if (plaintext.length === 0 || key.length === 0) {
-      alert("Text and key fields cannot be empty!");
-      return;
-    }
-
-    const encryptedText = autoKeyEncrypt(plaintext, key);
-
-    document.getElementById("ak_result").textContent ="Encrypted Text: " + encryptedText;
-  }
-
-  function runAutoKeyDecrypt() {
-    const encryptedText = document.getElementById("autokey_text").value.toUpperCase();
-    const key = document.getElementById("ak_key").value.toUpperCase();
-
-    if (encryptedText.length === 0 || key.length === 0) {
-      alert("Text and key fields cannot be empty!");
-      return;
-    }
-
-    const decryptedText = autoKeyDecrypt(encryptedText, key);
-
-    document.getElementById("ak_result").textContent = "Decrypted Text: " + decryptedText;
-  }
-
-  function autoKeyEncrypt(plaintext, key) {
-    let encryptedText = '';
-    key = key.toUpperCase();
-    let keyIndex = 0;
-
-    for (let i = 0; i < plaintext.length; i++) {
-      if (plaintext[i] === ' ') {
-        encryptedText += ' ';
-        continue;
-      }
-
-      const shift = alphabet.indexOf(key[keyIndex]);
-      const plainIdx = alphabet.indexOf(plaintext[i]);
-
-      const encryptedIdx = (plainIdx + shift) % 26;
-      encryptedText += alphabet[encryptedIdx];
-
-      keyIndex = (keyIndex + 1) % key.length;
-    }
-
-    return encryptedText;
-  }
-
-  function autoKeyDecrypt(encryptedText, key) {
-    let decryptedText = '';
-    key = key.toUpperCase();
-    let keyIndex = 0;
-
-    for (let i = 0; i < encryptedText.length; i++) {
-      if (encryptedText[i] === ' ') {
-        decryptedText += ' ';
-        continue;
-      }
-
-      const shift = alphabet.indexOf(key[keyIndex]);
-      const encryptedIdx = alphabet.indexOf(encryptedText[i]);
-
-      const decryptedIdx = (encryptedIdx - shift + 26) % 26;
-      decryptedText += alphabet[decryptedIdx];
-
-      keyIndex = (keyIndex + 1) % key.length;
-    }
-
-    return decryptedText;
-  }
-</script>
-</body>
-</html>
-
-
-
-
-
-(5.) Hill Cipher
-
-<!--  HILL  -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hill Cipher</title>
-</head>
-<body>
-
-<div class="container">
-  <div class="border p-3 rounded shadow mt-2" id="Hill_block">
-    <h2>(5.) Hill Cipher</h2>
-    <form id="Hill_form" action="#Hill_block">
-      Plain Text: <input type="text" id="Hill_text" class="form-control" placeholder="Enter a text to encrypt">
-      Key (Enter 4 numbers without spaces): <input type="text" id="Hill_key" class="form-control" placeholder="Enter a key">
-      <button id="Hill_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runHillEncrypt()">Encrypt</button>
-      <button id="Hill_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runHillDecrypt()">Decrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <div id="hill_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  function runHillEncrypt() {
-    const plaintext = document.getElementById("Hill_text").value.toUpperCase();
-    const key = document.getElementById("Hill_key").value;
-
-    if (plaintext.length === 0 || key.length === 0) {
-      alert("Text and key fields cannot be empty!");
-      return;
-    }
-
-    if (!isValidNumericKey(key)) {
-      alert("Key must be a sequence of 4 numerical values.");
-      return;
-    }
-
-    const encryptedText = hillEncrypt(plaintext, key);
-
-    document.getElementById("hill_result").textContent = "Encrypted Text: " + encryptedText;
-  }
-
-  function runHillDecrypt() {
-    const encryptedText = document.getElementById("Hill_text").value.toUpperCase();
-    const key = document.getElementById("Hill_key").value;
-
-    if (encryptedText.length === 0 || key.length === 0) {
-      alert("Text and key fields cannot be empty!");
-      return;
-    }
-
-    if (!isValidNumericKey(key)) {
-      alert("Key must be a sequence of 4 numerical values.");
-      return;
-    }
-
-    const decryptedText = hillDecrypt(encryptedText, key);
-
-    document.getElementById("hill_result").textContent = "Decrypted Text: " + decryptedText;
-  }
-
-  function isValidNumericKey(key) {
-    return /^[0-9]{4}$/.test(key);
-  }
-
-  // Hill Cipher Logic
-  function matrixMultiply(matrix, vector, mod) {
-    const result = [];
-
-    for (let i = 0; i < matrix.length; i++) {
-      let sum = 0;
-
-      for (let j = 0; j < vector.length; j++) {
-        sum += matrix[i][j] * vector[j];
-      }
-
-      result.push(sum % mod);
-    }
-
-    return result;
-  }
-
-  function matrixInverse(matrix) {
-    const det = (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0] + 26) % 26;
-    let invDet = -1;
-
-    for (let i = 0; i < 26; i++) {
-      if ((det * i) % 26 === 1) {
-        invDet = i;
-        break;
-      }
-    }
-
-    if (invDet === -1) {
-      return null; // The matrix is not invertible
-    }
-
-    const result = [
-      [(matrix[1][1] * invDet) % 26, (-matrix[0][1] * invDet) % 26],
-      [(-matrix[1][0] * invDet) % 26, (matrix[0][0] * invDet) % 26]
-    ];
-
-    return result;
-  }
-
-  function hillEncrypt(plaintext, key) {
-    const keyMatrix = [
-      [parseInt(key[0]), parseInt(key[1])],
-      [parseInt(key[2]), parseInt(key[3])]
-    ];
-
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const mod = alphabet.length;
-
-    let encryptedText = '';
-
-    for (let i = 0; i < plaintext.length; i += 2) {
-      const vector = [
-        alphabet.indexOf(plaintext[i]),
-        i + 1 < plaintext.length ? alphabet.indexOf(plaintext[i + 1]) : 0
-      ];
-
-      const encryptedVector = matrixMultiply(keyMatrix, vector, mod);
-
-      encryptedText += alphabet[encryptedVector[0]];
-      encryptedText += alphabet[encryptedVector[1]];
-    }
-
-    return encryptedText;
-  }
-
-  function hillDecrypt(encryptedText, key) {
-    const keyMatrix = matrixInverse([
-      [parseInt(key[0]), parseInt(key[1])],
-      [parseInt(key[2]), parseInt(key[3])]
-    ]);
-
-    if (keyMatrix === null) {
-      alert("The key matrix is not invertible. Encryption/decryption is not possible.");
-      return "";
-    }
-
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const mod = alphabet.length;
-
-    const inverseKeyMatrix = matrixInverse(keyMatrix);
-
-    let decryptedText = '';
-
-    for (let i = 0; i < encryptedText.length; i += 2) {
-      const vector = [
-        alphabet.indexOf(encryptedText[i]),
-        i + 1 < encryptedText.length ? alphabet.indexOf(encryptedText[i + 1]) : 0
-      ];
-
-      const decryptedVector = matrixMultiply(inverseKeyMatrix, vector, mod);
-
-      decryptedText += alphabet[decryptedVector[0]];
-      decryptedText += alphabet[decryptedVector[1]];
-    }
-
-    return decryptedText;
-  }
-</script>
-</body>
-</html>
-
-
-
-(6.) ElGamal Cipher
-
-<!--Elgamal-->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElGamal Cipher</title>
-</head>
-<body>
-
-<div class="container">
-  <div class="border p-3 rounded shadow mt-2" id="Elgamal_block">
-    <h2>(6.) ElGamal Cipher</h2>
-    <form id="Elgamal_form" action="#Elgamal_block">
-      Plain Text: <input type="text" id="Elgamal_text" class="form-control" placeholder="Enter a text to encrypt">
-      <button id="Elgamal_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runElgamalEncrypt()">Encrypt</button>
-      <button id="Elgamal_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runElgamalDecrypt()">Decrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <div id="Elgamal_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-<script type="text/javascript">
-  const p = 23;  
-  const g = 5;   
-  const x = 6;   
-  function runElgamalEncrypt() {
-    const plaintext = document.getElementById("Elgamal_text").value;
-
-    if (plaintext.length === 0) {
-      alert("Text field cannot be empty!");
-      return;
-    }
-    const encryptedText = elgamalEncrypt(plaintext);
-    document.getElementById("Elgamal_result").textContent = "Encrypted Text: " + encryptedText;
-  }
-  function runElgamalDecrypt() {
-    const encryptedText = document.getElementById("Elgamal_result").textContent;
-    if (!encryptedText.startsWith("Encrypted Text: ")) {
-      alert("No encrypted text to decrypt!");
-      return;
-    }
-    const ciphertext = encryptedText.substring("Encrypted Text: ".length);
-    const decryptedText = elgamalDecrypt(ciphertext);
-    document.getElementById("Elgamal_result").textContent = "Decrypted Text: " + decryptedText;
-  }
-  function elgamalEncrypt(plaintext) {
-    const k = Math.floor(Math.random() * (p - 2)) + 1;
-    const y = modPow(g, x, p);
-    const K = modPow(y, k, p);
-    const m = strToNum(plaintext);
-    const c1 = modPow(g, k, p);
-    const c2 = (m * K) % p;
-    return `(${c1}, ${c2})`;
-  }
-  function elgamalDecrypt(ciphertext) {
-    const match = /^\((\d+), (\d+)\)$/.exec(ciphertext);
-    if (!match) {
-      alert("Invalid ciphertext format!");
-      return "";
-    }
-    const c1 = parseInt(match[1]);
-    const c2 = parseInt(match[2]);
-
-    const s = modPow(c1, x, p);
-
-    const sInverse = modInverse(s, p);
-
-    const m = (c2 * sInverse) % p;
-
-    const decryptedText = numToStr(m);
-
-    return decryptedText;
-  }
-
-  function modPow(base, exponent, modulus) {
-    if (modulus === 1) return 0;
-    let result = 1;
-    base = base % modulus;
-    while (exponent > 0) {
-      if (exponent % 2 === 1) {
-        result = (result * base) % modulus;
-      }
-      exponent = Math.floor(exponent / 2);
-      base = (base * base) % modulus;
-    }
-    return result;
-  }
-
-  function modInverse(a, m) {
-    let g = gcd(a, m);
-    if (g !== 1) {
-      alert("Modular inverse does not exist!");
-      return null;
-    }
-    return power(a, m - 2, m);
-  }
-
-  function gcd(a, b) {
-    if (b === 0) return a;
-    return gcd(b, a % b);
-  }
-
-  function power(a, b, m) {
-    let result = 1;
-    a = a % m;
-    while (b > 0) {
-      if (b % 2 === 1) {
-        result = (result * a) % m;
-      }
-      b = Math.floor(b / 2);
-      a = (a * a) % m;
-    }
-    return result;
-  }
-
-  function strToNum(str) {
-    let num = 0;
-    for (let i = 0; i < str.length; i++) {
-      num += str.charCodeAt(i);
-    }
-    return num;
-  }
-
-  function numToStr(num) {
-    return String.fromCharCode(num);
-  }
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-(7.) 24-Bit Block Cipher
-
-<!--des-->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>24-Bit Block Cipher</title>
-</head>
-<body>
-
-  <div class="container">
-    <div class="border p-3 rounded shadow mt-2" id="24-Bit Block Cipher">
-
-    <h2>(7.) 24-Bit Block Cipher</h2>
-    <form id="cipher_form">
-      Plain Text (Hex): <input type="text" id="plain_text" class="form-control" placeholder="Enter a 6-digit hex value">
-      Key (Hex): <input type="text" id="cipher_key" class="form-control" placeholder="Enter a 6-digit hex key">
-      <button class="btn btn-primary mt-2" type="button" onclick="encrypt()">Encrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <b>Encrypted Text (Hex):</b>
-      <div id="encrypted_text" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(252, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-  <script type="text/javascript">
-    function encrypt() {
-      var plainTextHex = document.getElementById("plain_text").value;
-      var cipherKeyHex = document.getElementById("cipher_key").value;
-
-      if (plainTextHex.length !== 6 || cipherKeyHex.length !== 6) {
-        alert("Input should be 6-digit hex values.");
-        return;
-      }
-
-      var plainText = parseInt(plainTextHex, 16);
-      var cipherKey = parseInt(cipherKeyHex, 16);
-
-      var encryptedText = blockCipher(plainText, cipherKey);
-      document.getElementById("encrypted_text").textContent = encryptedText.toString(16).toUpperCase();
-    }
-
-    function blockCipher(block, key) {
-      // Simplified block cipher operation
-      var encryptedBlock = block ^ key;
-      return encryptedBlock;
-    }
-  </script>
-</body>
-</html>
-
-
-
-
-(8.) Vernam Cipher
-
-<!---  Vernam  -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vernam : Binary Encryption and Decryption</title>
-</head>
-<body>
-
-<div class="container">
-  <div class="border p-3 rounded shadow mt-2" id="binary_block">
-    <h2>(8.) Vernam Cipher (Binary)</h2>
-    <form id="binary_form">
-      Plain Binary: <input type="text" id="binary_text" class="form-control" placeholder="Enter a binary string">
-      Key: <input type="text" id="binary_key" class="form-control" placeholder="Enter a binary key">
-      <button id="enc_btn" class="btn btn-primary mt-2" type="button" onclick="runEncrypt()">Encrypt</button>
-      <button id="dec_btn" class="btn btn-secondary mt-2" type="button" onclick="runDecrypt()">Decrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <b>Encrypted/Decrypted Binary:</b>
-      <div id="result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  function runEncrypt() {
-    const plaintext = document.getElementById("binary_text").value;
-    const key = document.getElementById("binary_key").value;
-
-    if (plaintext.length === 0 || key.length === 0) {
-      alert("Text and key fields cannot be empty!");
-      return;
-    }
-
-    if (!isValidBinary(plaintext) || !isValidBinary(key)) {
-      alert("Invalid binary input. Only 0s and 1s are allowed.");
-      return;
-    }
-
-    const encryptedBinary = binaryEncrypt(plaintext, key);
-
-    document.getElementById("result").textContent = "Encrypted Text: " + encryptedBinary;
-  }
-
-  function runDecrypt() {
-    const encryptedBinary = document.getElementById("binary_text").value;
-    const key = document.getElementById("binary_key").value;
-
-    if (encryptedBinary.length === 0 || key.length === 0) {
-      alert("Text and key fields cannot be empty!");
-      return;
-    }
-
-    if (!isValidBinary(encryptedBinary) || !isValidBinary(key)) {
-      alert("Invalid binary input. Only 0s and 1s are allowed.");
-      return;
-    }
-
-    const decryptedBinary = binaryDecrypt(encryptedBinary, key);
-
-    document.getElementById("result").textContent = "Decrypted Text: " + decryptedBinary;
-  }
-
-  function binaryEncrypt(plaintext, key) {
-    let encryptedBinary = '';
-
-    for (let i = 0; i < plaintext.length; i++) {
-      const plainBit = parseInt(plaintext[i]);
-      const keyBit = parseInt(key[i % key.length]);
-
-      const encryptedBit = (plainBit + keyBit) % 2;
-      encryptedBinary += encryptedBit.toString();
-    }
-
-    return encryptedBinary;
-  }
-  function binaryDecrypt(encryptedBinary, key) {
-    let decryptedBinary = '';
-
-    for (let i = 0; i < encryptedBinary.length; i++) {
-      const encryptedBit = parseInt(encryptedBinary[i]);
-      const keyBit = parseInt(key[i % key.length]);
-
-      const decryptedBit = (encryptedBit - keyBit + 2) % 2;
-      decryptedBinary += decryptedBit.toString();
-    }
-    return decryptedBinary;
-  }
-  function isValidBinary(input) {
-    return /^[01]+$/.test(input);
-  }
-</script>
-</body>
-</html>
-(9.) Polyalphabetic Cipher
-
-<!--poly-->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polyalphabetic Cipher</title>
-</head>
-<body>
-
-  <div class="container">
-    <div class="border p-3 rounded shadow mt-2" id="polyalphabetic_block">
-      <h2>(9.) Polyalphabetic Cipher</h2>
-      <form id="polyalphabetic_form" action="#polyalphabetic_block">
-        Plain Text: <input type="text" id="polyalphabetic_text" class="form-control" placeholder="Enter a text to encrypt/decrypt">
-        Key: <input type="text" id="polyalphabetic_key" class="form-control" placeholder="Enter a key">
-        <button id="polyalphabetic_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runEncrypt()">Encrypt</button>
-        <button id="polyalphabetic_dec_btn" class="btn btn-secondary mt-2" type="button" onclick="runDecrypt()">Decrypt</button>
-      </form>
-      <div class="mt-4 border p-3 rounded">
-        <b>Encrypted/Decrypted Text:</b>
-        <div id="polyalphabetic_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    function runEncrypt() {
-      var plainText = document.getElementById("polyalphabetic_text").value.toUpperCase();
-      var key = document.getElementById("polyalphabetic_key").value.toUpperCase();
-      var encryptedText = PolyalphabeticEncrypt(plainText, key);
-      document.getElementById("polyalphabetic_result").textContent = encryptedText;
-    }
-
-    function runDecrypt() {
-      var encryptedText = document.getElementById("polyalphabetic_text").value.toUpperCase();
-      var key = document.getElementById("polyalphabetic_key").value.toUpperCase();
-      var decryptedText = PolyalphabeticDecrypt(encryptedText, key);
-      document.getElementById("polyalphabetic_result").textContent = decryptedText;
-    }
-
-    function PolyalphabeticEncrypt(text, key) {
-      var encryptedText = '';
-      for (var i = 0; i < text.length; i++) {
-        var charCode = (text.charCodeAt(i) - 65 + key.charCodeAt(i % key.length) - 65) % 26 + 65;
-        encryptedText += String.fromCharCode(charCode);
-      }
-      return encryptedText;
-    }
-
-    function PolyalphabeticDecrypt(encryptedText, key) {
-      var decryptedText = '';
-      for (var i = 0; i < encryptedText.length; i++) {
-        var charCode = (encryptedText.charCodeAt(i) - 65 - (key.charCodeAt(i % key.length) - 65) + 26) % 26 + 65;
-        decryptedText += String.fromCharCode(charCode);
-      }
-      return decryptedText;
-    }
-  </script>
-</body>
-</html>
-
-
-
-
-
-
-(10.) Caesar Cipher
-
-<!--ceasar-->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caesar Cipher</title>
-  <!-- Include Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-
-<div class="container">
-  <div class="border p-3 rounded shadow mt-2">
-    <h2>(10.) Caesar Cipher</h2>
-    <form id="caesar_form">
-      Text: <input type="text" id="caesar_text" class="form-control" placeholder="Enter a text">
-      Key: <input type="number" id="caesar_key" class="form-control" placeholder="Enter a key (0 to 25)">
-      <button class="btn btn-primary mt-2" type="button" onclick="runEncrypt(false)">Encrypt</button>
-      <button class="btn btn-secondary mt-2" type="button" onclick="runEncrypt(true)">Decrypt</button>
-    </form>
-    <div class="mt-4 border p-3 rounded">
-      <b>Encrypted/Decrypted Text:</b>
-      <div id="result_box" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript">
-  function runEncrypt(isDecrypt) {
-    var shift = parseInt(document.getElementById("caesar_key").value);
-    var text = document.getElementById("caesar_text").value;
-
-    if (text.length === 0) {
-      alert("Text field cannot be empty!");
-      return;
-    }
-
-    var key = shift % 26;
-
-    var result = isDecrypt ? caesarShift(text, 26 - key) : caesarShift(text, key);
-    document.getElementById("result_box").textContent = result;
-  }
-
-  function caesarShift(text, shift) {
-    var result = "";
-
-    for (var i = 0; i < text.length; i++) {
-      var ch = text.charCodeAt(i);
-
-      if (65 <= ch && ch <= 90) {
-        result += String.fromCharCode((ch - 65 + shift + 26) % 26 + 65);
-      } else if (97 <= ch && ch <= 122) {
-        result += String.fromCharCode((ch - 97 + shift + 26) % 26 + 97);
-      } else {
-        result += text.charAt(i);
-      }
-    }
-
-    return result;
-  }
-</script>
-
+    </header>
+    <main class="container my-4">
+        <!-- Vigenère Cipher -->
+        <section id="vigenere" class="mb-5">
+            <h2 class="text-danger">Vigenère Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="vg-text" class="form-label">Plain Text</label>
+                    <input type="text" id="vg-text" class="form-control" placeholder="Enter text">
+                </div>
+                <div class="mb-3">
+                    <label for="vg-key" class="form-label">Key</label>
+                    <input type="text" id="vg-key" class="form-control" placeholder="Enter key">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runVigenereEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runVigenereDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="vg-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- Monoalphabetic Cipher -->
+        <section id="monoalphabetic" class="mb-5">
+            <h2 class="text-danger">Monoalphabetic Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="mo-text" class="form-label">Plain Text</label>
+                    <input type="text" id="mo-text" class="form-control" placeholder="Enter text">
+                </div>
+                <div class="mb-3">
+                    <label for="mo-key" class="form-label">Key (26 characters)</label>
+                    <input type="text" id="mo-key" class="form-control" placeholder="Enter key">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runMonoalphabeticEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runMonoalphabeticDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="mo-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- Hill Cipher -->
+        <section id="hill" class="mb-5">
+            <h2 class="text-danger">Hill Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="hill-text" class="form-label">Plain Text</label>
+                    <input type="text" id="hill-text" class="form-control" placeholder="Enter text">
+                </div>
+                <div class="mb-3">
+                    <label for="hill-key" class="form-label">Key (4 numbers)</label>
+                    <input type="text" id="hill-key" class="form-control" placeholder="Enter 4 numbers without spaces">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runHillEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runHillDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="hill-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- ElGamal Cipher -->
+        <section id="elgamal" class="mb-5">
+            <h2 class="text-danger">ElGamal Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="elgamal-text" class="form-label">Plain Text</label>
+                    <input type="text" id="elgamal-text" class="form-control" placeholder="Enter text">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runElgamalEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runElgamalDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="elgamal-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- Vernam Cipher -->
+        <section id="vernam" class="mb-5">
+            <h2 class="text-danger">Vernam Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="vernam-text" class="form-label">Plain Text</label>
+                    <input type="text" id="vernam-text" class="form-control" placeholder="Enter text">
+                </div>
+                <div class="mb-3">
+                    <label for="vernam-key" class="form-label">Key</label>
+                    <input type="text" id="vernam-key" class="form-control" placeholder="Enter key">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runVernamEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runVernamDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="vernam-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- Polyalphabetic Cipher -->
+        <section id="polyalphabetic" class="mb-5">
+            <h2 class="text-danger">Polyalphabetic Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="poly-text" class="form-label">Plain Text</label>
+                    <input type="text" id="poly-text" class="form-control" placeholder="Enter text">
+                </div>
+                <div class="mb-3">
+                    <label for="poly-key" class="form-label">Key</label>
+                    <input type="text" id="poly-key" class="form-control" placeholder="Enter key">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runPolyalphabeticEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runPolyalphabeticDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="poly-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- Caesar Cipher -->
+        <section id="caesar" class="mb-5">
+            <h2 class="text-danger">Caesar Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="caesar-text" class="form-label">Text</label>
+                    <input type="text" id="caesar-text" class="form-control" placeholder="Enter text">
+                </div>
+                <div class="mb-3">
+                    <label for="caesar-key" class="form-label">Key</label>
+                    <input type="number" id="caesar-key" class="form-control" placeholder="Enter key (0-25)">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runCaesarEncrypt()">Encrypt</button>
+                <button type="button" class="btn btn-secondary" onclick="runCaesarDecrypt()">Decrypt</button>
+            </form>
+            <div class="result mt-3">
+                <h5>Result</h5>
+                <div id="caesar-result" class="p-2 border rounded bg-light text-danger"></div>
+            </div>
+        </section>
+
+        <!-- 24-Bit Block Cipher -->
+        <section id="block-cipher" class="mb-5">
+            <h2 class="text-danger">24-Bit Block Cipher</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="block-text" class="form-label">Plain Text (Hex)</label>
+                    <input type="text" id="block-text" class="form-control" placeholder="Enter 6-digit hex value">
+                </div>
+                <div class="mb-3">
+                    <label for="block-key" class="form-label">Key (Hex)</label>
+                    <input type="text" id="block-key" class="form-control" placeholder="Enter 6-digit hex key">
+                </div>
+                <button type="button" class="btn btn-danger" onclick="runBlockEncrypt()">Encrypt</button>
+                <div class="result mt-3">
+                    <h5>Result</h5>
+                    <div id="block-result" class="p-2 border rounded bg-light text-danger"></div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="text-center py-4">
+        <p>&copy; 2024 Cipher Website. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
