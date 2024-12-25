@@ -157,3 +157,118 @@
       </script>
       </body>
       </html>
+<!--  Monoalphabetic Cipher  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monoalphabetic Cipher</title>
+</head>
+<body>
+
+<div class="container">
+  <div class="border p-3 rounded shadow mt-2" id="Monoalphabetic_block">
+    <h2>(2.) Monoalphabetic Cipher</h2>
+    <form id="Monoalphabetic_form" action="#Monoalphabetic_block">
+      Plain Text: <input type="text" id="Monoalphabetic_text" class="form-control" placeholder="Enter a text to encrypt">
+      <label for="substitution-key">Key (26 characters):</label>
+      <input type="text" id="substitution-key" class="form-control" placeholder="Enter substitution key (26 characters)" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ">
+      <button id="generate_key_btn" class="btn btn-secondary mt-2" type="button" onclick="generateSubstitutionKey()">Generate Key</button>
+      <button id="mo_enc_btn" class="btn btn-primary mt-2" type="button" onclick="runMonoalphabeticEncrypt()">Encrypt</button>
+      <button id="mo_denc_btn" class="btn btn-secondary mt-2" type="button" onclick="runMonoalphabeticDecrypt()">Decrypt</button>
+    </form>
+    <div class="mt-4 border p-3 rounded">
+      <b>Result:</b>
+      <div id="mo_result" class="border rounded p-2" style="background-color: #e4e4e4; color: rgb(255, 0, 0);"></div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+  function generateSubstitutionKey() {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const shuffledAlphabet = shuffleString(alphabet);
+    document.getElementById("substitution-key").value = shuffledAlphabet;
+  }
+
+  function shuffleString(str) {
+    const array = str.split("");
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array.join("");
+  }
+
+  function runMonoalphabeticEncrypt() {
+    const plaintext = document.getElementById("Monoalphabetic_text").value.toUpperCase();
+    const key = document.getElementById("substitution-key").value.toUpperCase();
+
+    if (plaintext.length === 0 || key.length !== 26) {
+      alert("Invalid input. Text cannot be empty and key must have 26 characters.");
+      return;
+    }
+
+    const encryptedText = monoalphabeticEncrypt(plaintext, key);
+
+    document.getElementById("mo_result").textContent = "Encrypted Text: " + encryptedText;
+  }
+
+  function runMonoalphabeticDecrypt() {
+    const encryptedText = document.getElementById("Monoalphabetic_text").value.toUpperCase();
+    const key = document.getElementById("substitution-key").value.toUpperCase();
+
+    if (encryptedText.length === 0 || key.length !== 26) {
+      alert("Invalid input. Text cannot be empty and key must have 26 characters.");
+      return;
+    }
+
+    const decryptedText = monoalphabeticDecrypt(encryptedText, key);
+
+    document.getElementById("mo_result").textContent = "Decrypted Text: " + encryptedText;
+
+  }
+
+  function monoalphabeticEncrypt(plaintext, key) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let encryptedText = "";
+
+    for (let i = 0; i < plaintext.length; i++) {
+      const char = plaintext[i];
+      const index = alphabet.indexOf(char);
+
+      if (index !== -1) {
+        encryptedText += key[index];
+      } else {
+        encryptedText += char;
+      }
+    }
+
+    return encryptedText;
+  }
+
+  function monoalphabeticDecrypt(encryptedText, key) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let decryptedText = "";
+
+    for (let i = 0; i < encryptedText.length; i++) {
+      const char = encryptedText[i];
+      const index = key.indexOf(char);
+
+      if (index !== -1) {
+        decryptedText += alphabet[index];
+      } else {
+        decryptedText += char;
+      }
+    }
+
+    return decryptedText;
+  }
+
+</script>
+</body>
+</html>
+
